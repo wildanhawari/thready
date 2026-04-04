@@ -6,9 +6,9 @@ export default function ThreadList({ threads, users, authUser, onVote }) {
   return (
     <div className="space-y-4">
       {threads.map((thread) => (
-        <ThreadItem 
-          key={thread.id} 
-          thread={thread} 
+        <ThreadItem
+          key={thread.id}
+          thread={thread}
           user={users.find((u) => u.id === thread.ownerId) || {}}
           authUser={authUser}
           onVote={onVote}

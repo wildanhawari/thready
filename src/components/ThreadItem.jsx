@@ -15,9 +15,9 @@ export default function ThreadItem({ thread, user, authUser, onVote }) {
       <h3 className="text-xl font-bold text-slate-900 mb-2">{thread.title}</h3>
       <p className="text-slate-600 text-sm line-clamp-2 mb-4">{stripHtml(thread.body)}</p>
       <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-4">
-        <VoteButton 
-          upVotes={thread.upVotesBy} 
-          downVotes={thread.downVotesBy} 
+        <VoteButton
+          upVotes={thread.upVotesBy}
+          downVotes={thread.downVotesBy}
           onVote={(voteType) => onVote(thread.id, voteType)}
           authUserId={authUser?.id}
         />

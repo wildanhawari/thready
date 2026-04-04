@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ArrowLeft, Loader2 } from 'lucide-react';
-import { 
-  asyncReceiveThreadDetail, 
-  clearThreadDetailActionCreator, 
-  asyncAddComment, 
-  asyncToggleVoteThreadDetail, 
-  asyncToggleVoteComment 
+import {
+  asyncReceiveThreadDetail,
+  clearThreadDetailActionCreator,
+  asyncAddComment,
+  asyncToggleVoteThreadDetail,
+  asyncToggleVoteComment
 } from '../states/threadDetail/action';
 import ThreadDetail from '../components/ThreadDetail';
 import CommentInput from '../components/CommentInput';

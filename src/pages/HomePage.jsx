@@ -14,7 +14,7 @@ export default function HomePage() {
   const users = useSelector((state) => state.users);
   const authUser = useSelector((state) => state.authUser);
   const isLoading = useSelector((state) => state.loadingBar.default > 0);
-  
+
   const [activeCategory, setActiveCategory] = useState('');
 
   useEffect(() => {
@@ -26,13 +26,13 @@ export default function HomePage() {
     return Array.from(cats);
   }, [threads]);
 
-  const filteredThreads = activeCategory 
+  const filteredThreads = activeCategory
     ? threads.filter((t) => t.category === activeCategory)
     : threads;
 
   const onVote = (threadId, voteType) => {
     if (!authUser) {
-      alert("Silakan login terlebih dahulu untuk memberikan vote.");
+      alert('Silakan login terlebih dahulu untuk memberikan vote.');
       navigate('/login');
       return;
     }
@@ -41,10 +41,10 @@ export default function HomePage() {
 
   return (
     <div className="max-w-3xl mx-auto py-8 px-4">
-      <CategoryFilter 
-        categories={categories} 
-        activeCategory={activeCategory} 
-        onSelectCategory={setActiveCategory} 
+      <CategoryFilter
+        categories={categories}
+        activeCategory={activeCategory}
+        onSelectCategory={setActiveCategory}
       />
       {isLoading && threads.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-slate-500">
@@ -52,11 +52,11 @@ export default function HomePage() {
           {/* <p>Memuat Diskusi...</p> */}
         </div>
       ) : (
-        <ThreadList 
-          threads={filteredThreads} 
-          users={users} 
-          authUser={authUser} 
-          onVote={onVote} 
+        <ThreadList
+          threads={filteredThreads}
+          users={users}
+          authUser={authUser}
+          onVote={onVote}
         />
       )}
       {authUser && (

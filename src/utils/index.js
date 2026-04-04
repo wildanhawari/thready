@@ -8,5 +8,5 @@ export const showFormattedDate = (date) => {
 
 export const stripHtml = (html) => {
   const doc = new DOMParser().parseFromString(html, 'text/html');
-  return doc.body.textContent || "";
+  return doc.body.textContent || '';
 };

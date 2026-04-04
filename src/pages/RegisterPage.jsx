@@ -9,7 +9,7 @@ export default function RegisterPage() {
   const handleRegister = async ({ name, email, password }) => {
     try {
       await api.register({ name, email, password });
-      alert("Pendaftaran berhasil!");
+      alert('Pendaftaran berhasil!');
       navigate('/login');
     } catch (error) {
       alert(error.message);

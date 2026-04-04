@@ -27,21 +27,21 @@ export default function CreateThreadPage() {
       <form onSubmit={handleSubmit} className="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-5">
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">Judul Diskusi</label>
-          <input 
+          <input
             type="text" value={title} onChange={(e) => setTitle(e.target.value)}
             className="w-full border border-slate-200 rounded-lg p-3 focus:ring-2 focus:ring-blue-500" required
           />
         </div>
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">Kategori (Opsional)</label>
-          <input 
+          <input
             type="text" value={category} onChange={(e) => setCategory(e.target.value)}
             className="w-full border border-slate-200 rounded-lg p-3 focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">Isi Diskusi</label>
-          <textarea 
+          <textarea
             value={body} onChange={(e) => setBody(e.target.value)}
             className="w-full border border-slate-200 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 min-h-[200px]" required
           />

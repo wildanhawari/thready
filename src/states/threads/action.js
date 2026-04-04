@@ -45,7 +45,7 @@ function asyncToggleVoteThread({ threadId, voteType }) {
       await api.voteThread({ threadId, voteType });
     } catch (error) {
       alert(error.message);
-      dispatch(toggleVoteThreadActionCreator({ threadId, userId: authUser.id, voteType: 0 })); 
+      dispatch(toggleVoteThreadActionCreator({ threadId, userId: authUser.id, voteType: 0 }));
     }
   };
 }

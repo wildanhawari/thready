@@ -22,9 +22,9 @@ export default function ThreadDetail({ threadDetail, authUser, onVoteThread }) {
       <div className="prose prose-blue max-w-none text-slate-700 mb-8">
         {parse(threadDetail.body)}
       </div>
-      <VoteButton 
-        upVotes={threadDetail.upVotesBy} 
-        downVotes={threadDetail.downVotesBy} 
+      <VoteButton
+        upVotes={threadDetail.upVotesBy}
+        downVotes={threadDetail.downVotesBy}
         onVote={onVoteThread}
         authUserId={authUser?.id}
       />

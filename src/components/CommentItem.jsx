@@ -15,8 +15,8 @@ export default function CommentItem({ comment, authUser, onVote }) {
         </div>
       </div>
       <div className="text-slate-700 text-sm mb-4">{parse(comment.content)}</div>
-      <VoteButton 
-        upVotes={comment.upVotesBy} downVotes={comment.downVotesBy} 
+      <VoteButton
+        upVotes={comment.upVotesBy} downVotes={comment.downVotesBy}
         onVote={(voteType) => onVote(comment.id, voteType)}
         authUserId={authUser?.id}
       />

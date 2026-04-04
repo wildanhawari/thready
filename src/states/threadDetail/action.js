@@ -87,8 +87,8 @@ function asyncToggleVoteComment({ commentId, voteType }) {
   };
 }
 
-export { 
+export {
   ActionType, receiveThreadDetailActionCreator, clearThreadDetailActionCreator, addCommentActionCreator,
   toggleVoteThreadDetailActionCreator, toggleVoteCommentActionCreator,
-  asyncReceiveThreadDetail, asyncAddComment, asyncToggleVoteThreadDetail, asyncToggleVoteComment 
+  asyncReceiveThreadDetail, asyncAddComment, asyncToggleVoteThreadDetail, asyncToggleVoteComment
 };

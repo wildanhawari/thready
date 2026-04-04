@@ -100,7 +100,7 @@ const api = {
     if (responseJson.status !== 'success') throw new Error(responseJson.message);
     return responseJson.data.vote;
   },
-  
+
   async getLeaderboards() {
     const response = await fetch(`${BASE_URL}/leaderboards`);
     const responseJson = await response.json();

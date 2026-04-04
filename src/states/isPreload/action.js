@@ -19,7 +19,7 @@ function asyncPreloadProcess() {
         const authUser = await api.getOwnProfile();
         dispatch(setAuthUserActionCreator(authUser));
       }
-    } catch (error) {
+    } catch {
       putAccessToken('');
     } finally {
       dispatch(setIsPreloadActionCreator(false));
