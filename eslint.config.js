@@ -7,11 +7,10 @@ import daStyle from "eslint-config-dicodingacademy";
 export default defineConfig([
   js.configs.recommended,
   pluginReact.configs.flat.recommended,
-  daStyle,
   { 
-    files: ["**/*.{js,mjs,cjs,jsx}"], 
-    languageOptions: { 
-      globals: { ...globals.browser, ...globals.node } 
+    files: ["**/*.{js,mjs,cjs,jsx}"],
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node }
     },
     settings: {
       react: {
@@ -19,10 +18,11 @@ export default defineConfig([
       },
     },
     rules: {
-      'react/react-in-jsx-scope': 'off', 
-      'react/prop-types': 'warn',        
-      'no-alert': 'off',                
-      'no-console': 'off',             
+      ...daStyle.rules,
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'warn',
+      'no-alert': 'off',
+      'no-console': 'off',
     }
   }
 ]);
