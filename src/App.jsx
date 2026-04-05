@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Loader2 } from 'lucide-react';
 import { LoadingBar } from '@dimasmds/react-redux-loading-bar';
 import { asyncPreloadProcess } from './states/isPreload/action';
+import { Toaster } from 'react-hot-toast';
 
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
@@ -34,6 +35,15 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-200 selection:text-blue-900">
       <LoadingBar className="bg-blue-600 h-1 fixed top-0 z-50 w-full" />
       <Navbar />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            background: '#334155',
+            color: '#fff',
+          },
+        }}
+      />
       <main className="pb-20">
         <Routes>
           <Route path="/" element={<HomePage />} />

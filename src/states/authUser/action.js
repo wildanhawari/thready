@@ -23,8 +23,6 @@ function asyncSetAuthUser({ email, password }) {
       putAccessToken(token);
       const authUser = await api.getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
-    } catch (error) {
-      alert(error.message);
     } finally {
       dispatch(hideLoading());
     }

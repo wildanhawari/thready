@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../utils/api';
 import RegisterInput from '../components/RegisterInput';
+import toast from 'react-hot-toast';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -9,10 +10,10 @@ export default function RegisterPage() {
   const handleRegister = async ({ name, email, password }) => {
     try {
       await api.register({ name, email, password });
-      alert('Pendaftaran berhasil!');
+      toast.success('Pendaftaran berhasil!');
       navigate('/login');
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 

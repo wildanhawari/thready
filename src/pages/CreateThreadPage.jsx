@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { asyncAddThread } from '../states/threads/action';
+import toast from 'react-hot-toast';
 
 export default function CreateThreadPage() {
   const navigate = useNavigate();
@@ -12,12 +13,12 @@ export default function CreateThreadPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title || !body) return alert('Judul dan isi tidak boleh kosong');
+    if (!title || !body) return toast.error('Judul dan isi tidak boleh kosong');
     try {
       await dispatch(asyncAddThread({ title, category, body }));
       navigate('/');
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 

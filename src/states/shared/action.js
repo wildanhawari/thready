@@ -2,6 +2,7 @@ import { showLoading, hideLoading } from '@dimasmds/react-redux-loading-bar';
 import api from '../../utils/api';
 import { receiveUsersActionCreator } from '../users/action';
 import { receiveThreadsActionCreator } from '../threads/action';
+import toast from 'react-hot-toast';
 
 function asyncPopulateUsersAndThreads() {
   return async (dispatch) => {
@@ -14,7 +15,7 @@ function asyncPopulateUsersAndThreads() {
       dispatch(receiveUsersActionCreator(users));
       dispatch(receiveThreadsActionCreator(threads));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     } finally {
       dispatch(hideLoading());
     }

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { asyncSetAuthUser } from '../states/authUser/action';
 import LoginInput from '../components/LoginInput';
+import toast from 'react-hot-toast';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -11,9 +12,10 @@ export default function LoginPage() {
   const handleLogin = async ({ email, password }) => {
     try {
       await dispatch(asyncSetAuthUser({ email, password }));
+      toast.success('Berhasil masuk! Selamat datang.');
       navigate('/');
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 

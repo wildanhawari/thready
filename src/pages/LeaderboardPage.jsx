@@ -27,7 +27,6 @@ export default function LeaderboardPage() {
         {isLoading && leaderboards.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-10 text-slate-500">
             <Loader2 className="animate-spin mb-4" size={24} />
-            {/* <p className="text-sm">Memuat data klasemen...</p> */}
           </div>
         ) : (
           <div className="divide-y divide-slate-100">

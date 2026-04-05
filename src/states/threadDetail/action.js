@@ -1,5 +1,6 @@
 import { showLoading, hideLoading } from '@dimasmds/react-redux-loading-bar';
 import api from '../../utils/api';
+import toast from 'react-hot-toast';
 
 const ActionType = {
   RECEIVE_THREAD_DETAIL: 'RECEIVE_THREAD_DETAIL',
@@ -36,7 +37,7 @@ function asyncReceiveThreadDetail(threadId) {
       const threadDetail = await api.getThreadDetail(threadId);
       dispatch(receiveThreadDetailActionCreator(threadDetail));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     } finally {
       dispatch(hideLoading());
     }
@@ -49,8 +50,6 @@ function asyncAddComment({ threadId, content }) {
     try {
       const comment = await api.createComment({ threadId, content });
       dispatch(addCommentActionCreator(comment));
-    } catch (error) {
-      alert(error.message);
     } finally {
       dispatch(hideLoading());
     }
@@ -66,7 +65,7 @@ function asyncToggleVoteThreadDetail(voteType) {
     try {
       await api.voteThread({ threadId: threadDetail.id, voteType });
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(toggleVoteThreadDetailActionCreator({ userId: authUser.id, voteType: 0 }));
     }
   };
@@ -81,7 +80,7 @@ function asyncToggleVoteComment({ commentId, voteType }) {
     try {
       await api.voteComment({ threadId: threadDetail.id, commentId, voteType });
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(toggleVoteCommentActionCreator({ commentId, userId: authUser.id, voteType: 0 }));
     }
   };

@@ -6,6 +6,7 @@ import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 import { asyncToggleVoteThread } from '../states/threads/action';
 import CategoryFilter from '../components/CategoryFilter';
 import ThreadList from '../components/ThreadList';
+import toast from 'react-hot-toast';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ export default function HomePage() {
 
   const onVote = (threadId, voteType) => {
     if (!authUser) {
-      alert('Silakan login terlebih dahulu untuk memberikan vote.');
+      toast.error('Harus login terlebih dahulu');
       navigate('/login');
       return;
     }
