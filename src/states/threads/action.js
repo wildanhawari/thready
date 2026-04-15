@@ -34,8 +34,22 @@ function asyncAddThread({ title, body, category }) {
 
 function asyncToggleVoteThread({ threadId, voteType }) {
   return async (dispatch, getState) => {
-    const { authUser } = getState();
-    if (!authUser) throw new Error('Harus login untuk memberikan vote');
+    const { authUser, threads } = getState();
+    if (!authUser) {
+      toast.error('Harus login untuk memberikan vote');
+      return;
+    }
+
+    const currentThread = threads.find((thread) => thread.id === threadId);
+    let previousVoteType = 0;
+
+    if (currentThread) {
+      if (currentThread.upVotesBy.includes(authUser.id)) {
+        previousVoteType = 1;
+      } else if (currentThread.downVotesBy.includes(authUser.id)) {
+        previousVoteType = -1;
+      }
+    }
 
     dispatch(toggleVoteThreadActionCreator({ threadId, userId: authUser.id, voteType }));
 
@@ -43,7 +57,11 @@ function asyncToggleVoteThread({ threadId, voteType }) {
       await api.voteThread({ threadId, voteType });
     } catch (error) {
       toast.error(error.message);
-      dispatch(toggleVoteThreadActionCreator({ threadId, userId: authUser.id, voteType: 0 }));
+      dispatch(toggleVoteThreadActionCreator({ 
+        threadId, 
+        userId: authUser.id, 
+        voteType: previousVoteType 
+      }));
     }
   };
 }
